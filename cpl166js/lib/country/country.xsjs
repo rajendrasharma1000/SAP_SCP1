@@ -8,7 +8,7 @@ function saveCountry(country) {
 
   if (result && result.EX_ERROR != null) { 
     return {body : result,
-      status: $.net.http.BAD_REQUEST};
+      status: $.net.http.BAD_REQUEST};;
   }
   else { 
       return {body : output,
