@@ -1,0 +1,49 @@
+ID: CPL166MTA
+_schema-version: '2.1'
+version: 0.0.1
+modules:
+  - name: cpl166db
+    type: hdb
+    path: cpl166db
+    requires:
+      - name: hdi_cpl166db
+  - name: cpl166js
+    type: nodejs
+    path: cpl166js
+    provides:
+      - name: cpl166js_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: cpl166db
+      - name: hdi_cpl166db
+  - name: cpl166ui
+    type: html5
+    path: cpl166ui
+    parameters:
+      disk-quota: 512M
+      memory: 256M
+    build-parameters:
+      builder: grunt
+    requires:
+      - name: cpl166js_api
+        group: destinations
+        properties:
+          name: cpl166js_be
+          url: '~{url}'
+resources:
+  - name: hdi_cpl166db
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container
+  - name: uaa_CPL166MTA
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+    type: org.cloudfoundry.managed-service
+  - name: dest_CPL166MTA
+    parameters:
+      service-plan: lite
+      service: destination
+    type: org.cloudfoundry.managed-service

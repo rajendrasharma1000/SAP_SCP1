@@ -1,0 +1,4 @@
+COLUMN TABLE "CPL166MTA.cpl166db::country" (
+	"name" NVARCHAR(100),
+   "continent" NVARCHAR(100),
+   PRIMARY KEY ("name"))

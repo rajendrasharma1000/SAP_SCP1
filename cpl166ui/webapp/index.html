@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+<title>CPL166UI</title>
+
+<script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+
+id="sap-ui-bootstrap" data-sap-ui-libs="sap.ui.commons, sap.ui.table" data-sap-ui-theme="sap_bluecrystal">
+
+</script>
+
+<script src="./controller/Util.js" > </script>
+
+<script>
+// var oModel = new sap.ui.model.odata.v2.ODataModel("/country/get_country.xsjs", true);
+ // var oModel = new sap.ui.model.odata.ODataModel("/euro.xsodata", true);
+ // var oTable = new sap.ui.table.Table({
+	// 	title: "European Countries", 
+	// 	visibleRowCount: 5, 
+	// 	id: "tinytab",
+	// 	toolbar: new sap.ui.commons.Toolbar({items: [ 
+	// 	new sap.ui.commons.Button({text: "Add Country", press:openFirstDialog})
+	// ]})});
+ // oTable.addColumn(new sap.ui.table.Column({ label: "Country Name", template: "name" }));
+ // oTable.addColumn(new sap.ui.table.Column({ label: "Continent Name", template: "continent" }));
+ // oTable.setModel(oModel); 
+ // oTable.bindRows("/country"); 
+ // oTable.placeAt("content");
+ 
+ var oJsonModel = new sap.ui.model.json.JSONModel();
+ var oTable = new sap.ui.table.Table({
+		title: "Country List", 
+		visibleRowCount: 5, 
+		id: "tinytab"
+ });
+	oTable.addColumn(new sap.ui.table.Column({ label: "Country Name", template: "name" }));
+  oTable.addColumn(new sap.ui.table.Column({ label: "Continent Name", template: "continent" }));
+  oTable.setModel(oJsonModel); 
+  oTable.placeAt("content");
+  var aUrl = '/country/get_country.xsjs';
+               
+          $.ajax({
+               url: aUrl,
+               method: 'GET',
+               ifModified: false,
+               dataType: 'application/json',
+               dataType: "json",
+               crossDomain: true,
+               error: function(data){
+               	alert("error" + data)
+               },
+               success: function(data){
+               	// alert("Success" + data) 
+               	var oData = {
+               		country : data
+               	}
+               	oJsonModel.setData(oData);
+               	oTable.bindRows("/country"); 
+               	
+               }
+               });
+</script>
+
+</head>
+
+  <body class='sapUiBody'> <div id='content'></div> </body>
+ 
+</html>
+<!--<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>cpl166ui</title>
+		<script id="sap-ui-bootstrap"
+			src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+			data-sap-ui-theme="sap_fiori_3"
+			data-sap-ui-resourceroots='{"cpl166ui.cpl166ui": "./"}'
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
+			data-sap-ui-async="true"
+			data-sap-ui-frameOptions="trusted">
+		</script>
+	</head>
+	<body class="sapUiBody">
+		<div data-sap-ui-component data-name="cpl166ui.cpl166ui" data-id="container" data-settings='{"id" : "cpl166ui"}'></div>
+	</body>
+</html>-->

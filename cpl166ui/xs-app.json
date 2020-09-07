@@ -1,0 +1,21 @@
+{
+  "welcomeFile": "/cpl166ui/index.html",
+  "authenticationMethod": "none",
+  "logout": {
+    "logoutEndpoint": "/do/logout"
+  },
+  "routes": [
+    {
+      "source": "^/cpl166ui/(.*)$",
+      "target": "$1",
+      "localDir": "webapp"
+    },
+    {
+		"source": "^/euro.xsodata/.*$", 
+		"destination": "cpl166js_be"
+	}, {
+         "source": ".*\\.xsjs",
+         "destination": "cpl166js_be"
+     }
+  ]
+}
