@@ -4,7 +4,7 @@ module.exports = {
         "commonjs": true
     },
     "parserOptions": {
-        "ecmaVersion": 12
+        "ecmaVersion": 8
     },
     
 	"globals": {
