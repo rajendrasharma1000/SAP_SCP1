@@ -7,28 +7,8 @@ let query =
 	`SELECT  "name" as "name",
 			"zone" as "zone",
              "state" as "state" FROM "CPL166MTA.cpl166db::copycovidcities" `;
-// let rs = conn.executeQuery(query);
-let city = conn.executeQuery(query);;
-let zone = [];
-zone.push(city[0]);
-for(let i=1; i<city.length; i++){
-let found = false;
-	for(let j=0; j<zone.length; j++){
-		if(city[i].zone === zone[j].zone){
-        	found = true;
-            zone[j].name = zone[j].name + " , " + city[i].name;
-            zone[j].state = zone[j].state + " , " + city[i].state;
-            break;
-        }
-	
-	}
-    if(found){    
-    }else{
-    zone.push(city[i]);
-    
-    }
-	
-}
+let rs = conn.executeQuery(query);
+// let city = conn.executeQuery(query);
 
 
 // let body = "";
@@ -47,6 +27,6 @@ let found = false;
 // 		"attachment; filename=Excel.xls");
 
 $.response.contentType = "application/json";
-// $.response.setBody(rs);
-$.response.setBody(zone);
+$.response.setBody(rs);
+// $.response.setBody(city);
 $.response.status = $.net.http.OK;
