@@ -8,7 +8,7 @@ let query =
 			"zone" as "zone",
              "state" as "state" FROM "CPL166MTA.cpl166db::copycovidcities" `;
 // let rs = conn.executeQuery(query);
-let city = conn.executeQuery(query);;
+let city = conn.executeQuery(query);
 let zone = [];
 zone.push(city[0]);
 for(let i=1; i<city.length; i++){
