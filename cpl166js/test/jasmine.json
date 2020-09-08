@@ -1,0 +1,11 @@
+{
+  "spec_dir": "test",
+  "spec_files": [
+    "**/*.xsjslib"
+  ],
+  "helpers": [
+    "helpers/**/*.xsjslib"
+  ],
+  "stopSpecOnExpectationFailure": false,
+  "random": true
+}
