@@ -27,18 +27,53 @@ id="sap-ui-bootstrap" data-sap-ui-libs="sap.ui.commons, sap.ui.table" data-sap-u
  // oTable.setModel(oModel); 
  // oTable.bindRows("/country"); 
  // oTable.placeAt("content");
- 
- var oJsonModel = new sap.ui.model.json.JSONModel();
+ ////////////////////////////////////Back up//////////////////////////////
+ //var oJsonModel = new sap.ui.model.json.JSONModel();
+ //var oTable = new sap.ui.table.Table({
+	// 	title: "Country List 1", 
+	// 	visibleRowCount: 5, 
+	// 	id: "tinytab"
+ //});
+	// oTable.addColumn(new sap.ui.table.Column({ label: "Country Name", template: "name" }));
+ // oTable.addColumn(new sap.ui.table.Column({ label: "Continent Name", template: "continent" }));
+ // oTable.setModel(oJsonModel); 
+ // oTable.placeAt("content");
+ // var aUrl = '/country/get_covidcities.xsjs';
+               
+ //         $.ajax({
+ //              url: aUrl,
+ //              method: 'GET',
+ //              ifModified: false,
+ //              dataType: 'application/json',
+ //              dataType: "json",
+ //              crossDomain: true,
+ //              error: function(data){
+ //              	alert("error" + data)
+ //              },
+ //              success: function(data){
+ //              	// alert("Success" + data) 
+ //              	var oData = {
+ //              		country : data
+ //              	}
+ //              	oJsonModel.setData(oData);
+ //              	oTable.bindRows("/country"); 
+               	
+ //              }
+ //              });
+////////////////////////////////////Back up//////////////////////////////   
+
+var oJsonModel = new sap.ui.model.json.JSONModel();
  var oTable = new sap.ui.table.Table({
-		title: "Country List 1", 
+		title: "Covid impacted cities in India", 
 		visibleRowCount: 5, 
 		id: "tinytab"
  });
-	oTable.addColumn(new sap.ui.table.Column({ label: "Country Name", template: "name" }));
-  oTable.addColumn(new sap.ui.table.Column({ label: "Continent Name", template: "continent" }));
+	oTable.addColumn(new sap.ui.table.Column({ label: "City Name", template: "name" }));
+	oTable.addColumn(new sap.ui.table.Column({ label: "State Name", template: "state" }));
+  oTable.addColumn(new sap.ui.table.Column({ label: "Zone", template: "zone" }));
   oTable.setModel(oJsonModel); 
   oTable.placeAt("content");
-  var aUrl = '/country/get_country.xsjs';
+  var aUrl = '/country/get_covidcities.xsjs';
                
           $.ajax({
                url: aUrl,

@@ -1,0 +1,5 @@
+COLUMN TABLE "CPL166MTA.cpl166db::covidcities" (
+	"name" NVARCHAR(100),
+	"zone" NVARCHAR(100),
+   "state" NVARCHAR(100),
+   PRIMARY KEY ("name"))
