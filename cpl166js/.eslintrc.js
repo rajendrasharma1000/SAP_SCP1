@@ -1,12 +1,9 @@
 module.exports = {
     "env": {
         "browser": true,
-        "commonjs": true,
-        "es2021": true
+        "commonjs": true
     },
-    "parserOptions": {
-        "ecmaVersion": 12
-    },
+    
 	"globals": {
 		"require": false,
 		"respond": false,
