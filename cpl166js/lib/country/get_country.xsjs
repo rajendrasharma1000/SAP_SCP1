@@ -6,7 +6,7 @@ let conn = $.hdb.getConnection();
 let query =
 	`SELECT  "name" as "name",
              "continent" as "continent" FROM "CPL166MTA.cpl166db::country" `;
-let rs = conn.executeQuery(query);
+let rs = conn.executeQuery(query);;
 
 // let body = "";
 // let body = "["
