@@ -3,6 +3,9 @@ module.exports = {
         "browser": true,
         "commonjs": true
     },
+    "parserOptions": {
+        "ecmaVersion": 12
+    },
     
 	"globals": {
 		"require": false,
